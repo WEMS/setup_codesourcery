@@ -5,6 +5,8 @@ Originally obtained from: http://www.nas-central.org/wiki/Setting_up_the_codesou
 Setup Codesourcery
 ==================
 
+3 branches containing the versions that WEMS builds against to allow for CI work with Docker
+
 ```
 $ sudo ./setup.sh
 Enter cross comiplation by running: /usr/local/bin/codesourcery-arm-2014.05.sh
