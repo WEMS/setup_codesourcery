@@ -2,7 +2,7 @@
 
 #
 # Script name: setup.sh
-# Version: 2.2 - 2012-07-19
+# Version: 2.3 - 2016-11-30
 #
 # Copyright (C) 2009-2012  Matthias "Maddes" Buecher
 #
@@ -69,30 +69,6 @@ __EOF
 
 
 ###
-### Install prerequisites
-###
-
-# --> general buildtools & development packages
-#     wget & bzip2 for downloading and unpacking
-echo 'Installing prerequisites:'
-PACKAGES='build-essential linux-libc-dev wget bzip2 ncurses-dev'
-DOINSTALL=0
-for PACKAGE in ${PACKAGES}
- do
-#	# special cases
-	[ "${PACKAGE}" = "ncurses-dev" ] && PACKAGE="libncurses5-dev" ; # package ncurses-dev is virtual on Debian, which can not be found via dpkg
-
-	dpkg -l | grep -q -F -e "${PACKAGE}"
-	DOINSTALL=$?
-	[ "${DOINSTALL}" -ne 0 ] && break
-done
-[ "${DOINSTALL}" -ne 0 ] && {
-	sudo apt-get update
-	sudo apt-get install ${PACKAGES}
-}
-
-
-###
 ### Install toolchains
 ###
 
@@ -130,25 +106,13 @@ DLDIR="/tmp"
 DLBASEPATH='https://sourcery.mentor.com/public/gnu_toolchain'
 # before 2011: DLBASEPATH='http://www.codesourcery.com/public/gnu_toolchain/'
 
-## ARM target
-ARCHCODE='arm'
-CCPREFIX='arm-none-linux-gnueabi'
-HOSTPREFIX='i686-pc-linux-gnu'
-## (arm-2012.03)
-VERSION='arm-2012.03'
-SUBVERSION='57'
-
-## (arm-2014.05)
-#VERSION='arm-2014.05'
-#SUBVERSION='29'
-
 ## ia32 target
-#ARCHCODE='ia32'
-#CCPREFIX='i686-pc-linux-gnu'
-#HOSTPREFIX='i386-linux'
+ARCHCODE='ia32'
+CCPREFIX='i686-pc-linux-gnu'
+HOSTPREFIX='i386-linux'
 
 ## (ia32-2012.09)
-#VERSION='ia32-2012.09'
-#SUBVERSION='62'
+VERSION='ia32-2012.09'
+SUBVERSION='62'
 
 install_toolchain
