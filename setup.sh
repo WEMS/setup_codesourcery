@@ -32,7 +32,7 @@ install_toolchain ()
 {
 	BINPATH="${INSTALLPATH}/${VERSION}/bin"
 	SCRIPTFILE="${SCRIPTPATH}/${SCRIPTPREFIX}${VERSION}.sh"
-	DLFILE="${VERSION}${SUBVERSION}-${CCPREFIX}-i686-pc-linux-gnu.tar.bz2"
+	DLFILE="${VERSION}-${SUBVERSION}-${CCPREFIX}-${HOSTPREFIX}.tar.bz2"
 
 	echo "Installing ${VERSION}:"
 
@@ -130,19 +130,25 @@ DLDIR="/tmp"
 DLBASEPATH='https://sourcery.mentor.com/public/gnu_toolchain'
 # before 2011: DLBASEPATH='http://www.codesourcery.com/public/gnu_toolchain/'
 
-## -> ARM target
+## ARM target
 ARCHCODE='arm'
-CCPREFIX='arm-none-eabi'
-## (arm-2011.03-41)
-VERSION='arm-2014.05'
-SUBVERSION='-28'
+CCPREFIX='arm-none-linux-gnueabi'
+HOSTPREFIX='i686-pc-linux-gnu'
+## (arm-2012.03)
+VERSION='arm-2012.03'
+SUBVERSION='57'
+
+## (arm-2014.05)
+#VERSION='arm-2014.05'
+#SUBVERSION='29'
+
+## ia32 target
+#ARCHCODE='ia32'
+#CCPREFIX='i686-pc-linux-gnu'
+#HOSTPREFIX='i386-linux'
+
+## (ia32-2012.09)
+#VERSION='ia32-2012.09'
+#SUBVERSION='62'
+
 install_toolchain
-
-
-## -> MIPS GNU/Linux target
-ARCHCODE='mips'
-CCPREFIX='mips-linux-gnu'
-## (mips-2011.03-93)
-VERSION='mips-2011.03'
-SUBVERSION='-93'
-#install_toolchain
