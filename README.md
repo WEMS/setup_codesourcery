@@ -5,6 +5,8 @@ Originally obtained from: http://www.nas-central.org/wiki/Setting_up_the_codesou
 Setup Codesourcery
 ==================
 
+Browseable list of compiler packages: http://sourcery.mentor.com/public/gnu_toolchain/
+
 3 branches containing the versions that WEMS builds against to allow for CI work with Docker
 
 ```
